@@ -1,0 +1,314 @@
+$primary-color: #007bff;
+$background-light: #f8f9fa;
+$background-dark: #333;
+$text-dark: #fff;
+$border-color: #ddd;
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  &.dark-theme {
+    background-color: $background-dark;
+    color: $text-dark;
+  }
+}
+
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: $background-light;
+  padding: 20px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  li {
+    margin: 10px 0;
+  }
+  a, button {
+    text-decoration: none;
+    color: $primary-color;
+    font-size: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: block;
+    padding: 5px 0;
+  }
+  .dark-theme & {
+    background-color: darken($background-dark, 10%);
+  }
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 5px;
+  background-color: #fff;
+  border-bottom: 1px solid $border-color;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  input {
+    padding: 5px;
+    width: 200px;
+  }
+  button {
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  .dark-theme & {
+    background-color: $background-dark;
+    color: $text-dark;
+    input, button {
+      color: $text-dark;
+      background-color: lighten($background-dark, 10%);
+    }
+  }
+}
+
+.main-content {
+  margin-left: 200px;
+  margin-top: 60px;
+  padding: 20px;
+  width: calc(100% - 200px);
+  @media (max-width: 768px) {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+// Логін
+.login {
+  max-width: 350px;
+  margin: auto;
+  width: 100%;
+  padding: 40px 30px;
+
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+
+  text-align: center;
+  animation: fadeIn 0.6s ease-in-out;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  p {
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #666;
+  }
+
+  input {
+    display: block;
+    width: 100%;
+    margin: 12px 0;
+    padding: 12px 15px;
+
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+
+    transition: all 0.3s;
+
+    &:focus {
+      border-color: #2575fc;
+      box-shadow: 0 0 8px rgba(37, 117, 252, 0.3);
+    }
+  }
+
+  button {
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+    color: white;
+
+    transition: transform 0.2s, opacity 0.3s;
+
+    &:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+
+  .error {
+    margin-top: 10px;
+    color: red;
+    font-size: 14px;
+  }
+}
+
+// ToDo
+.todo {
+  h2 {
+    margin-bottom: 20px;
+  }
+  input {
+    padding: 8px;
+    width: 300px;
+  }
+  button {
+    padding: 8px 12px;
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  .filters {
+    margin: 10px 0;
+    button {
+      margin-right: 10px;
+    }
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  li {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid $border-color;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &.completed {
+      text-decoration: line-through;
+      color: gray;
+    }
+    button {
+      margin-left: 10px;
+      background-color: transparent;
+      color: $primary-color;
+      border: none;
+      cursor: pointer;
+    }
+  }
+}
+
+// Аналітика
+.analytics {
+  .charts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    .chart-container {
+      min-height: 300px;
+      max-height: 500px;
+      overflow: auto;
+    }
+  }
+  .tables {
+    margin-top: 40px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    th, td {
+      border: 1px solid $border-color;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  }
+  .dark-theme & {
+    table {
+      background-color: $background-dark;
+      color: $text-dark;
+      th {
+        background-color: darken(#f2f2f2, 60%);
+      }
+    }
+  }
+}
+
+// People
+.people {
+  padding: 20px;
+  h2 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .card {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    h3 {
+      margin: 0 0 10px;
+      color: #333;
+    }
+    p {
+      margin: 5px 0;
+      color: #666;
+    }
+  }
+  .dark-theme & {
+    .card {
+      background-color: darken($background-dark, 10%);
+      h3 {
+        color: $text-dark;
+      }
+      p {
+        color: lighten($text-dark, 20%);
+      }
+    }
+  }
+}
+
+// Загальні для Products та Settings
+.products, .settings {
+  padding: 20px;
+}
